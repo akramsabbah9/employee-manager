@@ -1,7 +1,7 @@
 /* IMPORTS */
 const express = require("express");
 const mysql  = require("mysql2");
-const connection = require("./db/database");
+const initializeDB = require("./db/database");
 const { user, pass } = require("./utils/credentials").getCredentials();
 
 /* GLOBALS */
@@ -15,54 +15,22 @@ const connection = mysql.createConnection({
 /* FUNCTIONS */
 
 /* MAIN */
-// create & initialize database if necessary
+// create & initialize database, start server, and begin prompt
 connection.connect(err => {
     if (err) throw err;
-    // create the database if it doesn't exist yet
-    connection.query("CREATE DATABASE IF NOT EXISTS employeeDB", (err, result) => {
+    
+    // initialize database
+    initializeDB(connection);
+
+    connection.query("INSERT INTO department SET ?", {name: "test"}, (err, result) => {
         if (err) throw err;
-        console.log("Created new employee database...");
+        console.log("inserted test data");
     });
 
-    // use the employeeDB database
-    connection.query("USE employeeDB", (err, result) => {
+    connection.query("SELECT * FROM department", (err, result, fields) => {
         if (err) throw err;
-    });
-
-    // create the tables if necessary: department first, then role, then employee
-    connection.query(`CREATE TABLE IF NOT EXISTS department (
-        id INT NOT NULL AUTO_INCREMENT,
-        name VARCHAR(30) NOT NULL,
-        PRIMARY KEY (id)
-        )`, (err, result) => {
-        if (err) throw err;
-        console.log("Created department table...");
-    });
-
-    connection.query(`CREATE TABLE IF NOT EXISTS role (
-        id INT NOT NULL AUTO_INCREMENT,
-        title VARCHAR(30) NOT NULL,
-        salary DECIMAL NOT NULL,
-        department_id INT NOT NULL,
-        PRIMARY KEY (id),
-        CONSTRAINT fk_department FOREIGN KEY (department_id) REFERENCES department(id) ON DELETE CASCADE
-        )`, (err, result) => {
-        if (err) throw err;
-        console.log("Created role table...");
-    });
-
-    connection.query(`CREATE TABLE IF NOT EXISTS employee (
-        id INT NOT NULL AUTO_INCREMENT,
-        first_name VARCHAR(30) NOT NULL,
-        last_name VARCHAR(30) NOT NULL,
-        role_id INT NOT NULL,
-        manager_id INT,
-        PRIMARY KEY (id),
-        CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE,
-        CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
-        )`, (err, result) => {
-        if (err) throw err;
-        console.log("Created employee table...");
+        console.log(result);
+        connection.end();
     });
 });
 

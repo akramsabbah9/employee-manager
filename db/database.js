@@ -3,16 +3,15 @@ const mysql  = require("mysql2");
 const { user, pass } = require("../utils/credentials").getCredentials();
 
 // create connection
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: user,
-    password: pass
-});
+// const connection = mysql.createConnection({
+//     host: "localhost",
+//     port: 3306,
+//     user: user,
+//     password: pass
+// });
 
 // create & initialize database if necessary
-connection.connect(err => {
-    if (err) throw err;
+const initializeDB = connection => {
     // create the database if it doesn't exist yet
     connection.query("CREATE DATABASE IF NOT EXISTS employeeDB", (err, result) => {
         if (err) throw err;
@@ -59,7 +58,7 @@ connection.connect(err => {
         if (err) throw err;
         console.log("Created employee table...");
     });
-});
+};
 
 
-module.exports = connection;
+module.exports = initializeDB;
