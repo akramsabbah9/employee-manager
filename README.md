@@ -2,6 +2,8 @@
 
 ## Description
 
+Employee Tracker is a command-line content management system for managing a company's employee database.
+
 ## Installation
 
 This application requires Node.js and MySQL to be installed on your machine in order to run.
