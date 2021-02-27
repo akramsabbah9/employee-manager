@@ -22,8 +22,9 @@
   },
   "homepage": "https://github.com/akramsabbah9/employee-tracker#readme",
   "dependencies": {
+    "console.table": "^0.10.0",
     "express": "^4.17.1",
     "inquirer": "^8.0.0",
-    "sqlite3": "^5.0.2"
+    "mysql2": "^2.2.5"
   }
 }
