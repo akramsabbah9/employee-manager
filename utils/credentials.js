@@ -37,7 +37,8 @@ the Employee Tracker application. They will be stored in utils/cred.txt.");
         {
             type: "input",
             name: "user",
-            message: "Username: "
+            message: "Username: ",
+            default: "root"
         },
         {
             type: "password",
