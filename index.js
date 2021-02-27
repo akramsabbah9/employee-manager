@@ -1,8 +1,7 @@
 /* IMPORTS */
-const express = require("express");
 const mysql  = require("mysql2");
-const initializeDB = require("./db/database");
 const { user, pass } = require("./utils/credentials").getCredentials();
+const initializeDB = require("./db/database");
 
 /* GLOBALS */
 const connection = mysql.createConnection({
@@ -30,8 +29,11 @@ connection.connect(err => {
     connection.query("SELECT * FROM department", (err, result, fields) => {
         if (err) throw err;
         console.log(result);
-        connection.end();
     });
+
+    // initialize inquirer prompt
+    // TODO
+    connection.end();
 });
 
 /* Akram Sabbah */
