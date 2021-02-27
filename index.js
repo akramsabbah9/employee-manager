@@ -3,6 +3,7 @@ const express = require("express");
 const mysql  = require("mysql2");
 const { user, pass } = require("./utils/credentials").getCredentials();
 
+console.log(user, pass);
 
 /* GLOBALS */
 const connection = mysql.createConnection({

@@ -7,13 +7,12 @@ const credentialsPath = path.join(__dirname, "./cred.txt");
 
 // return the username and password from the credentials file
 const getCredentials = () => {
-    // if the file doesn't exist, do credentialsPrompt first, then read credentials
+    // if the file doesn't exist, throw an error telling user to add their credentials
     if (!fs.existsSync(credentialsPath)) {
-        console.log("Credentials file does not yet exist.");
-        return credentialsPrompt().then(readCredentials);
+        throw Error("Credentials file does not yet exist. Use `npm run credentials` first!");
     }
 
-    // otherwise, just read the credentials from the existing file
+    // if it does exist, just read the credentials from the existing file
     return readCredentials();
 };
 
@@ -24,7 +23,6 @@ const readCredentials = () => {
             if (err) throw err;
         })
     );
-    console.log(__dirname, credentials);
     return credentials;
 };
 
