@@ -21,15 +21,15 @@ connection.connect(err => {
     // initialize database
     initializeDB(connection);
 
-    connection.query("INSERT INTO department SET ?", {name: "test"}, (err, result) => {
-        if (err) throw err;
-        console.log("inserted test data");
-    });
+    // connection.query("INSERT INTO department SET ?", {name: "test"}, (err, result) => {
+    //     if (err) throw err;
+    //     console.log("inserted test data");
+    // });
 
-    connection.query("SELECT * FROM department", (err, result, fields) => {
-        if (err) throw err;
-        console.log(result);
-    });
+    // connection.query("SELECT * FROM department", (err, result, fields) => {
+    //     if (err) throw err;
+    //     console.log(result);
+    // });
 
     // initialize inquirer prompt
     // TODO
