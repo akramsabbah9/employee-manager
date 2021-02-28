@@ -50,3 +50,5 @@ the Employee Tracker application. They will be stored in utils/cred.txt.");
 };
 
 module.exports = { getCredentials, credentialsPrompt };
+
+/* Akram Sabbah */

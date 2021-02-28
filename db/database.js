@@ -48,3 +48,5 @@ const initializeDB = connection => {
 
 
 module.exports = initializeDB;
+
+/* Akram Sabbah */
