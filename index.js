@@ -12,17 +12,15 @@ const connection = mysql.createConnection({
     password: pass
 });
 
-/* FUNCTIONS */
-
 /* MAIN */
-// create & initialize database, start server, and begin prompt
+// initialize database and begin prompt
 connection.connect(err => {
     if (err) throw err;
     
     // initialize database
     initializeDB(connection);
 
-    // initialize inquirer prompt. Once the prompt has finished, end the connection
+    // initialize inquirer prompt
     initPrompt(connection);
 });
 
