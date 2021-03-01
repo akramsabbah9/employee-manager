@@ -2,7 +2,7 @@
 const mysql  = require("mysql2");
 const { user, pass } = require("./utils/credentials").getCredentials();
 const initializeDB = require("./db/database");
-const Prompt = require("./lib/Prompt");
+const initPrompt = require("./lib/Prompt");
 
 /* GLOBALS */
 const connection = mysql.createConnection({
@@ -22,15 +22,8 @@ connection.connect(err => {
     // initialize database
     initializeDB(connection);
 
-    // initialize inquirer prompt
-    const tracker_prompt = new Prompt(connection);
-
-    // once the prompt has finished, end the connection
-    tracker_prompt.initPrompt()
-    .then(() => {
-        console.log("ending connection...");
-        connection.end();
-    });
+    // initialize inquirer prompt. Once the prompt has finished, end the connection
+    initPrompt(connection);
 });
 
 /* Akram Sabbah */
