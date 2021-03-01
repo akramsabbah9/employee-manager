@@ -23,9 +23,14 @@ connection.connect(err => {
     initializeDB(connection);
 
     // initialize inquirer prompt
-    const tracker_prompt = new Prompt(connection)
-    tracker_prompt.initPrompt();
-    connection.end();
+    const tracker_prompt = new Prompt(connection);
+
+    // once the prompt has finished, end the connection
+    tracker_prompt.initPrompt()
+    .then(() => {
+        console.log("ending connection...");
+        connection.end();
+    });
 });
 
 /* Akram Sabbah */
