@@ -1,5 +1,5 @@
 {
-  "name": "employee-tracker",
+  "name": "employee-manager",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,17 +8,24 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.js",
+    "credentials": "node input-credentials.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akramsabbah9/employee-tracker.git"
+    "url": "git+https://github.com/akramsabbah9/employee-manager.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akramsabbah9/employee-tracker/issues"
+    "url": "https://github.com/akramsabbah9/employee-manager/issues"
   },
-  "homepage": "https://github.com/akramsabbah9/employee-tracker#readme"
+  "homepage": "https://github.com/akramsabbah9/employee-manager#readme",
+  "dependencies": {
+    "console.table": "^0.10.0",
+    "express": "^4.17.1",
+    "inquirer": "^8.0.0",
+    "mysql2": "^2.2.5"
+  }
 }
