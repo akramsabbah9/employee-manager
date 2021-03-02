@@ -23,7 +23,7 @@ This application requires Node.js and MySQL to be installed on your machine in o
 
 ## Walkthrough
 
-![employee-manager-tutorial](https://user-images.githubusercontent.com/59624292/109576394-85093680-7aa8-11eb-929b-f00ac4550c11.gif)
+![employee-manager-tutorial](https://user-images.githubusercontent.com/59624292/109577050-cb12ca00-7aa9-11eb-8e40-858e7a6e19a3.gif)
 
 The above walkthrough can also be found here:
 
